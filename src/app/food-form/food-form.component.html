@@ -1,0 +1,50 @@
+<div *ngIf="error">Food with ID {{ this.id }} is not available</div>
+
+<form>
+  <h1>Food, Drink, and Appetizer Menu</h1>
+  <mat-form-field appearance="outline">
+    <mat-label>Food menu</mat-label>
+    <input matInput placeholder="type the food menu" 
+    name="foodName" id="foodName" 
+    [(ngModel)]="food.foodName" />
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="outline">
+    <mat-label>Drink menu</mat-label>
+    <input matInput placeholder="type the drink name" 
+    name="drinkName" id="drinkName" 
+    [(ngModel)]="food.drinkName" />
+  </mat-form-field>
+  <br />
+  <mat-form-field appearance="outline">
+    <mat-label>Appetizer menu</mat-label>
+    <input matInput placeholder="type the appetizer menu" 
+    name="appetizerName" 
+    id="appetizerName" 
+    [(ngModel)]="food.appetizerName" />
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <mat-label></mat-label>
+    <mat-select matNativeControl name="all" id="all" [(ngModel)]="food.all">
+      <mat-option value="Steak">
+        Every food will be ready in 10 until 15 minutes
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="buttons">
+    <div *ngIf="update">
+      <button mat-raised-button color="warn" (click)="deleteFood()">
+        delete
+      </button>
+      <button mat-raised-button color="primary" (click)="updateFood()">
+        update
+      </button>
+    </div>
+    <div *ngIf="!update">
+      <button mat-raised-button (click)="postFood()" color="primary">
+        post
+      </button>
+    </div>
+  </div>
+</form>
